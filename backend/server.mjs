@@ -3,7 +3,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser'
 import connectDB from './db/conn.mjs';
-import recepieRoutes from './routes/recipeRoutes.mjs'
+import recipeRoutes from './routes/recipeRoutes.mjs'
 import cors from 'cors';
 import morgan from 'morgan';
 
@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({extended: true}));
 
 // Routes
-app.use('/api/recipes', recepieRoutes);
+app.use('/api/recipes', recipeRoutes);
 
 
 // Listener
