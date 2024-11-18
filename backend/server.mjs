@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({extended: true}));
 
 // Routes
-app.use('/api/recepies', recepieRoutes);
+app.use('/api/recipes', recepieRoutes);
 
 
 // Listener
