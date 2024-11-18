@@ -8,8 +8,8 @@ function App() {
     <main>
       <Routes>
         <Route path='/recipe' />
-        <Route path='/FastFood' />
-        <Route path='/Restaurant' />
+        <Route path='/fastFood' />
+        <Route path='/restaurant' />
         <Route path='*' element={<NotFound/>} />
       </Routes>
     </main>
