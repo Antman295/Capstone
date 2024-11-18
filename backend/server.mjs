@@ -3,13 +3,15 @@ import express from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser'
 import connectDB from './db/conn.mjs';
-import recepieRoutes from './routes/receipesRoutes.mjs'
+import recepieRoutes from './routes/recipeRoutes.mjs'
 import cors from 'cors';
 import morgan from 'morgan';
 
 const app = express();
 dotenv.config();
 let PORT = process.env.PORT || 3000;
+
+connectDB();
 
 // Middleware
 app.use(cors());

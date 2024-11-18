@@ -1,65 +1,65 @@
-import Produce from '../models/produceSchema.mjs';
-import produce from '../data/data.mjs';
+import Recipe from '../models/recipeSchema.mjs';
+import recipe from '../data/data.mjs';
 
-async function createProduce(req, res) {
+async function createRecipe(req, res) {
   try {
     // Create a new produce obj
-    let newProduce = new Produce(req.body);
+    let newRecipe = new Recipe(req.body);
 
     // Save new obj to DB
-    await newProduce.save();
+    await newRecipe.save();
 
     // Return Result
-    res.json(newProduce);
+    res.json(newRecipe);
   } catch (err) {
     console.error(err);
     res.status(500).json({ msg: 'Server Error' });
   }
 }
 
-async function getAllProduce(req, res) {
+async function getAllRecipe(req, res) {
   try {
     // Find ALL {} produce from DB
-    let allProduce = await Produce.find({});
+    let allRecipe = await Recipe.find({});
 
     // Return Result
-    res.json(allProduce);
+    res.json(allRecipe);
   } catch (err) {
     console.error(err);
     res.status(500).json({ msg: 'Server Error' });
   }
 }
 
-async function getOneProduce(req, res) {
+async function getOneRecipe(req, res) {
   try {
-    let oneProduce = await Produce.findById(req.params.id);
+    let oneRecipe = await Recipe.findById(req.params.id);
 
-    res.json(oneProduce);
+    res.json(oneRecipe);
   } catch (err) {
     console.error(err);
     res.status(500).json({ msg: 'Server Error' });
   }
 }
 
-async function updateOneProduce(req, res) {
+async function updateOneRecipe(req, res) {
   try {
-    let updatedProduce = await Produce.findByIdAndUpdate(
+    let updatedRecipe = await Recipe.findByIdAndUpdate(
       req.params.id,
       req.body,
       { new: true }
     );
 
     // Return results
-    res.json(updatedProduce);
+    res.json(updatedRecipe);
   } catch (err) {
     console.error(err);
     res.status(500).json({ msg: 'Server Error' });
   }
 }
 
-async function deleteOneProduce(req, res) {
+async function deleteOneRecipe(req, res) {
   try {
-    await Produce.findByIdAndDelete(req.params.id);
+    await Recipe.findByIdAndDelete(req.params.id);
 
     res.json({ msg: 'Item Deleted' });
   } catch (err) {
@@ -70,8 +70,8 @@ async function deleteOneProduce(req, res) {
 
 async function seedDB(req, res) {
   try {
-    await Produce.deleteMany({}); //Delete everything
-    await Produce.create(produce); //Reseed with new data
+    await Recipe.deleteMany({}); //Delete everything
+    await Recipe.create(produce); //Reseed with new data
 
     res.json({ msg: 'DB Seeded' });
   } catch (err) {
@@ -81,10 +81,10 @@ async function seedDB(req, res) {
 }
 
 export default {
-  createProduce,
-  getAllProduce,
-  updateOneProduce,
-  deleteOneProduce,
-  getOneProduce,
+  createRecipe,
+  getAllRecipe,
+  updateOneRecipe,
+  deleteOneRecipe,
+  getOneRecipe,
   seedDB,
 };
