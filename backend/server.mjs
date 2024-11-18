@@ -6,6 +6,7 @@ import connectDB from './db/conn.mjs';
 import recipeRoutes from './routes/recipeRoutes.mjs'
 import cors from 'cors';
 import morgan from 'morgan';
+import recipe from './data/data.mjs';
 
 const app = express();
 dotenv.config();
@@ -21,7 +22,6 @@ app.use(bodyParser.json({extended: true}));
 
 // Routes
 app.use('/api/recipes', recipeRoutes);
-
 
 // Listener
 app.listen(PORT, () => {

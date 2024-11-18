@@ -71,7 +71,7 @@ async function deleteOneRecipe(req, res) {
 async function seedDB(req, res) {
   try {
     await Recipe.deleteMany({}); //Delete everything
-    await Recipe.create(produce); //Reseed with new data
+    await Recipe.create(recipe); //Reseed with new data
 
     res.json({ msg: 'DB Seeded' });
   } catch (err) {

@@ -6,8 +6,8 @@ const recipeSchema = new mongoose.Schema({
     difficulty: {type: String, required: true},
     time: { type: Number },
     ingredients: [{
-        1: {type: String},
-        2: {type: String},
+        1: {type: String, required: true},
+        2: {type: String, requried: true},
         3: {type: String},
         4: {type: String}
     }]
