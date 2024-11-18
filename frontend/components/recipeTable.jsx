@@ -7,6 +7,8 @@ function recipeTable({ recipe, searchParams, exist, setRecipe}) {
     recipe.forEach((el) => {
         if (el.name.toLowerCase().indexOf(searchParams.toLowerCase()) == -1) return;
 
+        if (!el.exist && onList) return;
+
         if (meal !== el.meal) {
             meal = el.meal;
             rows.push();
