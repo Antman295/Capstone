@@ -22,8 +22,11 @@ function RecipeTable({ recipe, searchParams, onList, setRecipe}) {
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Price</th>
+                    <th>Meal Type</th>
+                    <th>Dish</th>
+                    <th>Difficulty</th>
+                    <th>Time</th>
+                    <th>Ingredients</th>
                 </tr>
             </thead>
             <tbody>{rows}</tbody>
