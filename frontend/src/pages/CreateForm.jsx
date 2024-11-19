@@ -18,17 +18,12 @@ function CreateForm() {
     }
 
     function handleChange(e) {
-        if (e.target.name == 'stocked') {
-            setFormData({
-                ...formData,
-            });
-        } else {
             setFormData({
                 ...formData,
                 [e.target.name]: e.target.value,
             });
         }
-    }
+
 
     const handleIngredients = (index, value) => {
         setFormData((prev) => {
@@ -42,9 +37,9 @@ function CreateForm() {
     }
 
     async function handleSubmit(e) {
-        try {
             e.preventDefault();
-            let res = await createRecipe(formData);
+            try {
+            await createRecipe(formData);
             nav('/');
         } catch (err) {
             console.error(err);
@@ -72,16 +67,20 @@ function CreateForm() {
             <label>
                 Time - in minutes: <input onChange={handleChange} type='number' name='time' />
             </label>
+            <p>Ingrdients:</p>
+            {formData.ingredients.map((ingredient, index) => (
             <label key = {index}>
                 Ingredient {index + 1}: {' '}
                 <input type = "text" value={ingredient} onChange={(e) => handleIngredients(index, e.target.value)}
                 />
             </label>
-            <input type = 'submit' />
+            ))}
+            <button type="submit">Submit Recipe</button>
         </form>
         <button onClick={handleClick}>Close Form</button>
         </>
     )
 }
+
 
 export default CreateForm;
