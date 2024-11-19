@@ -16,8 +16,6 @@ async function createRecipe(formData) {
     try {
         let url = 'http://localhost:3000/api/recipes';
 
-        formData.time = formData.time + ' minutes';
-
         let res = await axios.post(url, formData);
 
         return res.data;
@@ -41,8 +39,7 @@ async function deleteRecipe(id) {
   async function updateRecipe(id, formData) {
     try {
       let url = `http://localhost:3000/api/recipes/${id}`;
-  
-      formData.time = formData.time + ' minutes'
+
   
       let res = await axios.put(url, formData);
   

@@ -6,13 +6,10 @@ const recipeSchema = new mongoose.Schema({
     difficulty: {type: String, required: true},
     time: { type: Number },
     ingredients: [{
-        1: {type: String, required: true},
-        2: {type: String, requried: true},
-        3: {type: String},
-        4: {type: String}
+        name: {type: String, required: true},
     }]
 })
 
-recipeSchema.index({name: 1})
+recipeSchema.index({dish: 1})
 
 export default mongoose.model('Recipe', recipeSchema)

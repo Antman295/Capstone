@@ -8,9 +8,9 @@ function CreateForm() {
     const [formData, setFormData] = useState({
         meal_type: '',
         dish: '',
-        difficulty: '',
+        difficulty: "Easy",
         time: 0,
-        ingredients: ['', '', '', '']
+        ingredients: [{name: ""}],
     });
 
     function handleClick(e) {
@@ -71,7 +71,7 @@ function CreateForm() {
             {formData.ingredients.map((ingredient, index) => (
             <label key = {index}>
                 Ingredient {index + 1}: {' '}
-                <input type = "text" value={ingredient} onChange={(e) => handleIngredients(index, e.target.value)}
+                <input type = "text" value={ingredient.name} onChange={(e) => handleIngredients(index, e.target.value)}
                 />
             </label>
             ))}
