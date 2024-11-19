@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function SearchBar({ formData, setFormData }) {
     function handleChange(e) {
         if (e.target.name == 'onList') {
@@ -15,7 +17,7 @@ function SearchBar({ formData, setFormData }) {
             <input
                 id='text'
                 onChange={handleChange}
-                name='searchParams'
+                dish='searchParams'
                 type='text'
                 placeholder="Search for a recipe"
                 />
@@ -24,6 +26,9 @@ function SearchBar({ formData, setFormData }) {
                 <input onChange={handleChange} name='onList' type='checkbox' />
                 Show recipes on your list.
             </label>
+            <nav>
+            <Link to={'/addRecipe'}>Add Recipe</Link>
+            </nav>
         </form>
     )
 }
