@@ -28,7 +28,7 @@ async function createRecipe(formData) {
 
 async function deleteRecipe(id) {
     try {
-      let url = `http://localhost:3000/api/produce/${id}`;
+      let url = `http://localhost:3000/api/recipes/${id}`;
   
       let res = await axios.delete(url);
   
@@ -40,7 +40,7 @@ async function deleteRecipe(id) {
   
   async function updateRecipe(id, formData) {
     try {
-      let url = `http://localhost:3000/api/produce/${id}`;
+      let url = `http://localhost:3000/api/recipes/${id}`;
   
       formData.time = formData.time + ' minutes'
   
@@ -54,7 +54,7 @@ async function deleteRecipe(id) {
   
   async function findOneRecipe(id) {
     try {
-      let url = `http://localhost:3000/api/produce/${id}`;
+      let url = `http://localhost:3000/api/recipes/${id}`;
   
       let res = await axios.get(url);
   
@@ -65,7 +65,7 @@ async function deleteRecipe(id) {
   }
   
   export {
-    getInventory,
+    getRecipes,
     createRecipe,
     deleteRecipe,
     updateRecipe,
