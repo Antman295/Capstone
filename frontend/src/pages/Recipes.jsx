@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import SearchBar from '../../components/SearchBar';
 import RecipeTable from '../../components/RecipeTable';
+import { getRecipes } from '../../utilites/controller.mjs';
 
 function Recipes() {
     const [list, setList] = useState(null);
@@ -10,7 +11,7 @@ function Recipes() {
     });
 
     async function getData() {
-        let res = await getList();
+        let res = await getRecipes();
         let newArr = res.sort((a, b) => a.category.localeCompare(b.category));
         setList(newArr);
     }

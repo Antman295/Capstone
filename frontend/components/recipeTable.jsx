@@ -1,4 +1,5 @@
 import React from 'react';
+import RecipeRow from './RecipeRow'
 
 function recipeTable({ recipe, searchParams, exist, setRecipe}) {
     let rows = [];
@@ -14,7 +15,7 @@ function recipeTable({ recipe, searchParams, exist, setRecipe}) {
             rows.push();
         }
 
-        rows.push();
+        rows.push(<RecipeRow recipes={recipe} setRecipe={setRecipe} recipe={el} />);
     });
 
     return (
