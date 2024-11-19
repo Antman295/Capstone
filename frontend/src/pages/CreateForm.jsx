@@ -26,16 +26,17 @@ function CreateForm() {
 
 
     const handleIngredients = (index, value) => {
-        setFormData((prev) => {
-            const newIngredient = [...prev.ingredients];
-            newIngredient[index] = value;
-            return {
-                ...prev,
-                ingredients: newIngredient,
-            }
-        })
+        const updatedIngredients = [...formData.ingredients];
+        updatedIngredients[index] = { name: value }; // Ensure ingredient is an object
+        setFormData({ ...formData, ingredients: updatedIngredients });
     }
 
+    const addIngredient = () => {
+        setFormData({
+            ...formData,
+            ingredients: [...formData.ingredients, {name: ""}],
+        })
+    }
     async function handleSubmit(e) {
             e.preventDefault();
             try {
@@ -75,6 +76,9 @@ function CreateForm() {
                 />
             </label>
             ))}
+            <button type="button" onClick={addIngredient}>
+                    Add Ingredient
+                </button>
             <button type="submit">Submit Recipe</button>
         </form>
         <button onClick={handleClick}>Close Form</button>
