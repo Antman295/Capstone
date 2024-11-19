@@ -1,12 +1,12 @@
 import React from 'react';
 import RecipeRow from './RecipeRow'
 
-function recipeTable({ recipe, searchParams, exist, setRecipe}) {
+function RecipeTable({ recipe, searchParams, onList, setRecipe}) {
     let rows = [];
     let meal = null;
 
     recipe.forEach((el) => {
-        if (el.name.toLowerCase().indexOf(searchParams.toLowerCase()) == -1) return;
+        if (el.dish.toLowerCase().indexOf(searchParams.toLowerCase()) == -1) return;
 
         if (!el.exist && onList) return;
 
@@ -31,4 +31,4 @@ function recipeTable({ recipe, searchParams, exist, setRecipe}) {
     )
 }
 
-export default recipeTable;
+export default RecipeTable;

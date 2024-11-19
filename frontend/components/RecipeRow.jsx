@@ -32,3 +32,5 @@ function RecipeRow({ recipe, setRecipe, recipes }) {
         </tr>
     )
 }
+
+export default RecipeRow;
