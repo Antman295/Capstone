@@ -18,13 +18,14 @@ function RecipeRow({ recipe, setRecipe, recipes }) {
         nav(`/updateRecipe/${recipe._id}`)
     }
 
+    const ingredients = recipe.ingredients.map((ingredient) => ingredient.name).join(', ')
     return (
         <tr>
-            <td>{recipe._id}</td>
+            <td>{recipe.meal_type}</td>
             <td>{recipe.dish}</td>
             <td>{recipe.difficulty}</td>
             <td>{recipe.time} minutes</td>
-            <td>{recipe.ingredients.join(', ')}</td>
+            <td>{ingredients}</td>
             <td>
                 <button onClick={handleDelete}>Delete</button>
             </td>
