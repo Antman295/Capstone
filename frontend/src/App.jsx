@@ -15,7 +15,7 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/recipes' element={<Recipes />} />
         <Route path='/addRecipe' element={<CreateForm />} />
-        <Route path='/updateRecipe' element={<UpdateForm />}/>
+        <Route path='/updateRecipe/:id' element={<UpdateForm />}/>
         <Route path='*' element={<NotFound/>} />
       </Routes>
     </main>

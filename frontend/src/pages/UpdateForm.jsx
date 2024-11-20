@@ -28,11 +28,18 @@ function UpdateForm() {
         });
     }
 
+    const handleIngredients = (index, value) => {
+        const updatedIngredients = [...formData.ingredients];
+        updatedIngredients[index] = { ...updatedIngredients[index], name: value };
+        setFormData({ ...formData, ingredients: updatedIngredients });
+    }
+
+    
     async function handleSubit(e) {
         try {
             e.preventDefault();
-            let res = await updateRecipe(id, formData);
-            MediaDeviceInfo('/');
+            await updateRecipe(id, formData);
+            nav('/recipes');
         } catch (err) {
             console.error(err);
         }
@@ -84,6 +91,14 @@ function UpdateForm() {
                         name='time'
                         />
                 </label>
+                <p>Ingredients:</p>
+                {formData.ingredients.map((ingredient, index) => (
+            <label key = {index}>
+                Ingredient {index + 1}: {' '}
+                <input type = "text" value={ingredient.name} onChange={(e) => handleIngredients(index, e.target.value)}
+                />
+            </label>
+            ))}
                 <input type='submit' />
             </form>
         ) : (
@@ -93,3 +108,5 @@ function UpdateForm() {
         </>
     )
 }
+
+export default UpdateForm;

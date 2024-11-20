@@ -27,7 +27,7 @@ function CreateForm() {
 
     const handleIngredients = (index, value) => {
         const updatedIngredients = [...formData.ingredients];
-        updatedIngredients[index] = { name: value }; // Ensure ingredient is an object
+        updatedIngredients[index] = { name: value };
         setFormData({ ...formData, ingredients: updatedIngredients });
     }
 
