@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function SearchBar({ formData, setFormData }) {
     function handleChange(e) {
         if (e.target.name == 'onList') {
-            setFormData({...formData, onList: !formData.onList})
+            setFormData({...formData, onList: e.target.checked})
         } else {
             setFormData({
                 ...formData,
@@ -17,17 +17,22 @@ function SearchBar({ formData, setFormData }) {
             <input
                 id='text'
                 onChange={handleChange}
-                dish='searchParams'
+                name='searchParams'
                 type='text'
                 placeholder="Search for a recipe"
                 />
 
             <label>
-                <input onChange={handleChange} name='onList' type='checkbox' />
+                <input 
+                    onChange={handleChange} 
+                    name='onList' 
+                    type='checkbox'
+                    checked={formData.onList}
+                    />
                 Show recipes on your list.
             </label>
             <nav>
-            <Link to={'/addRecipe'}>Add Recipe</Link>
+                <Link to={'/addRecipe'}>Add Recipe</Link>
             </nav>
         </form>
     )

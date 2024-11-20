@@ -12,7 +12,7 @@ function Recipes() {
 
     async function getData() {
         let res = await getRecipes();
-        let newArr = res.sort((a, b) => a.category.localeCompare(b.category));
+        let newArr = res.sort((a, b) => a.meal_type.localeCompare(b.meal_type));
         setList(newArr);
     }
 
