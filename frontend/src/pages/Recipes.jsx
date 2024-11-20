@@ -5,29 +5,44 @@ import { getRecipes } from '../../utilites/controller.mjs';
 
 function Recipes() {
     const [list, setList] = useState(null);
+    const [filteredRecipes, setFilteredRecipes] = useState([]);
     const [formData, setFormData] = useState({
         searchParams: '',
-        onList: true,
+        onList: false,
     });
 
     async function getData() {
+        try {
         let res = await getRecipes();
-        let newArr = res.sort((a, b) => a.meal_type.localeCompare(b.meal_type));
-        setList(newArr);
+        let sortedRecipes = res.sort((a, b) => a.meal_type.localeCompare(b.meal_type));
+        setList(sortedRecipes);
+        setFilteredRecipes(sortedRecipes);
+    } catch (err) {
+        console.error('Error fetching recipes: ', err);
     }
+}
 
     useEffect(() => {
         getData()
     }, [])
 
+    useEffect(() => {
+        const query = formData.searchParams.toLowerCase();
+        const filtered = list.filter(recipe =>
+            recipe.dish.toLowerCase().includes(query)
+        );
+        setFilteredRecipes(filtered);
+    }, [formData.searchParams, list])
+
     return (
         <>
-            <SearchBar formData={formData} setFormData={setFormData} />
-            {formData.onList && list ? (
+            <SearchBar 
+                formData={formData} 
+                setFormData={setFormData}  />
+
+            {formData.onList && filteredRecipes.length > 0 ? (
                 <RecipeTable
-                    searchParams = {formData.searchParams}
-                    onList = {formData.onList}
-                    recipe = {list}
+                    recipes = {filteredRecipes}
                     setList = {setList}
                 />
             ) : (

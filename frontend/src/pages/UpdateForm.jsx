@@ -18,7 +18,7 @@ function UpdateForm() {
     }, []);
 
     function handleClick(e) {
-        nav('/');
+        nav('/recipes');
     }
 
     function handleChange(e) {

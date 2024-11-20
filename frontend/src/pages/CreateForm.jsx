@@ -14,7 +14,7 @@ function CreateForm() {
     });
 
     function handleClick(e) {
-        nav('/');
+        nav('/recipes');
     }
 
     function handleChange(e) {
@@ -83,7 +83,6 @@ function CreateForm() {
             alert("Please enter all ingredients you added. If you want to delete the last one added, click on the delete button")
             return;
         }
-
             try {
                 await createRecipe(formData);
             nav('/recipes');
