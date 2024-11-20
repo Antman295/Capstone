@@ -48,9 +48,25 @@ function CreateForm() {
     }
 
     async function handleSubmit(e) {
-            e.preventDefault();
+        e.preventDefault();
+
+        if (!formData.meal_type) {
+            alert("Please enter the meal type in the text field")
+            return;
+        }
+
+        if (!formData.dish) {
+            alert("Please enter the dish name in the text field")
+            return;
+        }
+
+        if (!formData.ingredients) {
+            alert("Please enter all ingredients you added. If you want to delete the last one added, click on the delete button")
+            return;
+        }
+
             try {
-            await createRecipe(formData);
+                await createRecipe(formData);
             nav('/recipes');
         } catch (err) {
             console.error(err);
