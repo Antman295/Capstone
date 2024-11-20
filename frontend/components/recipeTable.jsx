@@ -2,7 +2,7 @@ import React from 'react';
 import RecipeRow from './RecipeRow'
 import RecipeMealRow from './RecipeMealRow';
 
-function RecipeTable({ recipe, searchParams, onList, setRecipe}) {
+function RecipeTable({ recipe, searchParams, onList, setList}) {
     let rows = [];
     let meal = null;
 
@@ -16,8 +16,9 @@ function RecipeTable({ recipe, searchParams, onList, setRecipe}) {
             rows.push(<RecipeMealRow key={`meal-${el.meal_type}-${index}`}meal_type={el.meal_type} />);
         }
 
-        rows.push(<RecipeRow  key={el._id || `recipe-${index}`}recipes={recipe} setRecipe={setRecipe} recipe={el} />);
+        rows.push(<RecipeRow  key={el._id || `recipe-${index}`} recipes={recipe} setRecipe={setList} recipe={el} />);
     });
+
 
     return (
         <table>
@@ -30,7 +31,10 @@ function RecipeTable({ recipe, searchParams, onList, setRecipe}) {
                     <th>Ingredients</th>
                 </tr>
             </thead>
-            <tbody>{rows}</tbody>
+            <tbody>{recipe.length > 0 && recipe.map((el) => (
+                    <RecipeRow key={el._id} recipe={el} setRecipe={setList} recipes={recipe} />
+                ))}
+                </tbody>
         </table>
     )
 }

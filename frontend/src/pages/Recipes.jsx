@@ -7,7 +7,7 @@ function Recipes() {
     const [list, setList] = useState(null);
     const [formData, setFormData] = useState({
         searchParams: '',
-        onList: false,
+        onList: true,
     });
 
     async function getData() {
@@ -23,7 +23,7 @@ function Recipes() {
     return (
         <>
             <SearchBar formData={formData} setFormData={setFormData} />
-            {list ? (
+            {formData.onList && list ? (
                 <RecipeTable
                     searchParams = {formData.searchParams}
                     onList = {formData.onList}
@@ -31,7 +31,7 @@ function Recipes() {
                     setList = {setList}
                 />
             ) : (
-                <h3>Waiting for a response...</h3>
+                <h3>No recipes to show. Click "Show recipes on your list" or add some</h3>
             )}
         
         </>
