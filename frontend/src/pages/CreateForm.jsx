@@ -37,11 +37,21 @@ function CreateForm() {
             ingredients: [...formData.ingredients, {name: ""}],
         })
     }
+
+    const deleteIngredient = () => {
+        if (formData.ingredients.length > 0) {
+        setFormData({
+            ...formData,
+            ingredients: formData.ingredients.slice(0, -1),
+        })
+    }
+    }
+
     async function handleSubmit(e) {
             e.preventDefault();
             try {
             await createRecipe(formData);
-            nav('/');
+            nav('/recipes');
         } catch (err) {
             console.error(err);
         }
@@ -79,6 +89,9 @@ function CreateForm() {
             <button type="button" onClick={addIngredient}>
                     Add Ingredient
                 </button>
+            <button type="button" onClick={deleteIngredient}>
+                    Delete Ingredient
+            </button>
             <button type="submit">Submit Recipe</button>
         </form>
         <button onClick={handleClick}>Close Form</button>

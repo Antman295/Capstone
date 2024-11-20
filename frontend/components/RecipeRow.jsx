@@ -10,7 +10,7 @@ function RecipeRow({ recipe, setRecipe, recipes }) {
 
         if (res) {
             let copy = recipes.filter((el) => el._id !== recipe._id);
-            setRecipes(copy);
+            setRecipe(copy);
         }        
     }
 
