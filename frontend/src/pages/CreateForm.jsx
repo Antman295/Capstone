@@ -47,16 +47,35 @@ function CreateForm() {
     }
     }
 
+    async function dishExists(dish) {
+        try {
+        let res = await fetch('/recipes');
+
+        const recipes = await res.json();
+        return recipes.some(recipe => recipe.dish.toLowerCase() === dish.toLowerCase());
+        } catch (err) {
+            console.error(err)
+            return false;
+        }
+    }
+
     async function handleSubmit(e) {
         e.preventDefault();
 
         if (!formData.meal_type) {
-            alert("Please enter the meal type in the text field")
+            alert("Please enter the meal type in the text field.")
             return;
         }
 
         if (!formData.dish) {
-            alert("Please enter the dish name in the text field")
+            alert("Please enter the dish name in the text field.")
+            return;
+        }
+
+        const doesDishExists = await dishExists(formData.dish)
+
+        if (doesDishExists) {
+            alert('This dish is already on the list. Please enter a new one.')
             return;
         }
 
@@ -69,6 +88,7 @@ function CreateForm() {
                 await createRecipe(formData);
             nav('/recipes');
         } catch (err) {
+            console.log('Error objects: ', err)
             console.error(err);
         }
     }
