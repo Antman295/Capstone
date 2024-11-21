@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function RecipeRow({ recipe, setRecipe, recipes }) {
     const nav = useNavigate()
+    const [warning, setWarning] = useState(false);
 
     async function handleDelete(params) {
         let res = await deleteRecipe(recipe._id);
@@ -11,7 +12,9 @@ function RecipeRow({ recipe, setRecipe, recipes }) {
         if (res) {
             let copy = recipes.filter((el) => el._id !== recipe._id);
             setRecipe(copy);
-        }        
+        }  
+        
+        setWarning(false);
     }
 
     function handleClick(e) {
@@ -27,7 +30,15 @@ function RecipeRow({ recipe, setRecipe, recipes }) {
             <td>{recipe.time} minutes</td>
             <td>{ingredients}</td>
             <td>
-                <button onClick={handleDelete}>Delete</button>
+            {warning ? (
+                    <>
+                        <span>Confirm delete?</span>
+                        <button onClick={handleDelete}>Yes</button>
+                        <button onClick={() => setWarning(false)}>No</button>
+                    </>
+                ) : (
+                    <button onClick={() => setWarning(true)}>Delete</button>
+                )}
             </td>
             <td>
                 <button onClick={handleClick}>Edit</button>

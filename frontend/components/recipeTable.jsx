@@ -4,6 +4,7 @@ import RecipeRow from './RecipeRow'
 function RecipeTable({ recipes, setList}) {
 
     return (
+        
         <table>
             <thead>
                 <tr>

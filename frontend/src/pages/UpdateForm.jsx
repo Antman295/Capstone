@@ -10,8 +10,7 @@ function UpdateForm() {
     useEffect(() => {
         async function getData() {
             let data = await findOneRecipe(id);
-            setFormData(data);
-            
+            setFormData(data);  
         }
 
         getData();
@@ -50,18 +49,6 @@ function UpdateForm() {
     }
     }
 
-    async function dishExists(dish) {
-        try {
-        let res = await fetch('http://localhost:3000/api/recipes');
-        const recipes = await res.json();
-        console.log("Existing recipes:", recipes);
-        // return true;
-        return recipes.some(recipe => recipe.dish.toLowerCase() === dish.toLowerCase());
-        } catch (err) {
-            console.error('Error checking if dish exists: ', err)
-            return false;
-        }
-    }
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -77,7 +64,7 @@ function UpdateForm() {
         }
 
         if (!formData.ingredients || formData.ingredients.some(ingredient => ingredient.name === "")) {
-            alert("Please enter all ingredients you added. If you want to delete the last one added, click on the delete button")
+            alert("Please don't leave the ingredient name empty. If you want to delete the last one added, click on the delete button")
             return;
         }
 
@@ -94,7 +81,7 @@ function UpdateForm() {
     return (
         <>
         <h2> Update Recipe </h2>
-        {formData && formData.meal_type ? (
+        {formData ? (
             <form onSubmit={handleSubmit}>
                 <label>
                     Meal Type:{' '}
