@@ -99,10 +99,10 @@ function CreateForm() {
         <form onSubmit={handleSubmit}>
             <label>
                 Meal Type: <input onChange={handleChange} type='text' name='meal_type' />
-            </label>
+            </label> {" "}
             <label>
                 Dish: <input onChange={handleChange} type='text' name='dish' />
-            </label>
+            </label> {" "}
             <label>
                 Difficulty: {' '}
                 <select onChange={handleChange} type='text' name='difficulty'>
@@ -110,26 +110,27 @@ function CreateForm() {
                     <option value='Medium'>Medium</option>
                     <option value='Hard'>Hard</option>
                     </select>
-            </label>
+            </label> {" "}
             <label>
                 Time - in minutes: <input onChange={handleChange} type='number' name='time' />
             </label>
-            <p>Ingrdients:</p>
+            <h3>Ingredients:</h3>
             {formData.ingredients.map((ingredient, index) => (
             <label key = {index}>
                 Ingredient {index + 1}: {' '}
                 <input type = "text" value={ingredient.name} onChange={(e) => handleIngredients(index, e.target.value)}
                 />
+                <br/>
             </label>
             ))}
-            <button type="button" onClick={addIngredient}>
+            <br/><button type="button" onClick={addIngredient}>
                     Add Ingredient
-                </button>
+                </button> {" "}
             <button type="button" onClick={deleteIngredient}>
                     Delete Ingredient
-            </button>
+            </button> <br/><br/>
             <button type="submit">Submit Recipe</button>
-        </form>
+        </form> <br/>
         <button onClick={handleClick}>Close Form</button>
         </>
     )

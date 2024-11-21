@@ -39,6 +39,8 @@ function SearchBar({ formData, setFormData, recipes, setFilteredRecipes }) {
                 value={formData.searchParams || ''}
                 />
 
+                <br/>
+
             <label>
                 <input 
                     onChange={handleCheckbox} 
@@ -48,8 +50,11 @@ function SearchBar({ formData, setFormData, recipes, setFilteredRecipes }) {
                     />
                 Show all recipes on your list.
             </label>
+
+            <br/><br/>
+
             <nav>
-                <Link to={'/addRecipe'}>Add Recipe</Link>
+                <Link to={'/addRecipe'}><button>Add Recipe</button></Link>
             </nav>
         </form>
     )

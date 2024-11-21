@@ -32,8 +32,8 @@ function RecipeRow({ recipe, setRecipe, recipes }) {
             <td>
             {warning ? (
                     <>
-                        <span>Confirm delete?</span>
-                        <button onClick={handleDelete}>Yes</button>
+                        <span>Confirm delete? This can't be undone</span> {" "}
+                        <button onClick={handleDelete}>Yes</button> {" "}
                         <button onClick={() => setWarning(false)}>No</button>
                     </>
                 ) : (

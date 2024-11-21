@@ -39,6 +39,9 @@ function Recipes() {
 
     return (
         <>
+        <div>
+            <h1>Make At Home</h1>
+        </div>
             <SearchBar 
                 formData={formData} 
                 setFormData={setFormData}
