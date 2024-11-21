@@ -52,7 +52,10 @@ function Recipes() {
                     setList = {setList}
                 />
             ) : (
+                <div>
                 <h2>Search for a recipe or click the checkbox to show all of them</h2>
+                <h3>Add some recipes to the list if this message still appears as it might be empty</h3>
+                </div>
             )}
         
         </>
