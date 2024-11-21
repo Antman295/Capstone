@@ -50,11 +50,11 @@ function CreateForm() {
     async function dishExists(dish) {
         try {
         let res = await fetch('/recipes');
-
         const recipes = await res.json();
+        console.log("Existing recipes:", recipes);
         return recipes.some(recipe => recipe.dish.toLowerCase() === dish.toLowerCase());
         } catch (err) {
-            console.error(err)
+            console.error('Error checking if dish exists: ', err)
             return false;
         }
     }
@@ -73,13 +73,14 @@ function CreateForm() {
         }
 
         const doesDishExists = await dishExists(formData.dish)
+        console.log("Does dish exist?", doesDishExists);
 
         if (doesDishExists) {
             alert('This dish is already on the list. Please enter a new one.')
             return;
         }
 
-        if (!formData.ingredients) {
+        if (!formData.ingredients || formData.ingredients.some(ingredient => ingredient.name === "")) {
             alert("Please enter all ingredients you added. If you want to delete the last one added, click on the delete button")
             return;
         }

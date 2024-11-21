@@ -26,11 +26,15 @@ function Recipes() {
     }, [])
 
     useEffect(() => {
+        if (formData.searchParams || formData.onList) {
         const query = formData.searchParams.toLowerCase();
         const filtered = list.filter(recipe =>
             recipe.dish.toLowerCase().includes(query)
         );
         setFilteredRecipes(filtered);
+    } else {
+        setFilteredRecipes([]);
+    }
     }, [formData.searchParams, list])
 
     return (
