@@ -34,8 +34,53 @@ function UpdateForm() {
         setFormData({ ...formData, ingredients: updatedIngredients });
     }
 
-    
-    async function handleSubit(e) {
+    const addIngredient = () => {
+        setFormData({
+            ...formData,
+            ingredients: [...formData.ingredients, {name: ""}],
+        })
+    }
+
+    const deleteIngredient = () => {
+        if (formData.ingredients.length > 0) {
+        setFormData({
+            ...formData,
+            ingredients: formData.ingredients.slice(0, -1),
+        })
+    }
+    }
+
+    async function dishExists(dish) {
+        try {
+        let res = await fetch('http://localhost:3000/api/recipes');
+        const recipes = await res.json();
+        console.log("Existing recipes:", recipes);
+        // return true;
+        return recipes.some(recipe => recipe.dish.toLowerCase() === dish.toLowerCase());
+        } catch (err) {
+            console.error('Error checking if dish exists: ', err)
+            return false;
+        }
+    }
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+
+        if (!formData.meal_type) {
+            alert("Please don't leave the meal type empty when updating this dish.")
+            return;
+        }
+
+        if (!formData.dish) {
+            alert("Please don't leave the dish name empty when updating this dish.")
+            return;
+        }
+
+        if (!formData.ingredients || formData.ingredients.some(ingredient => ingredient.name === "")) {
+            alert("Please enter all ingredients you added. If you want to delete the last one added, click on the delete button")
+            return;
+        }
+
         try {
             e.preventDefault();
             await updateRecipe(id, formData);
@@ -49,8 +94,8 @@ function UpdateForm() {
     return (
         <>
         <h2> Update Recipe </h2>
-        {formData ? (
-            <form onSubmit={handleSubit}>
+        {formData && formData.meal_type ? (
+            <form onSubmit={handleSubmit}>
                 <label>
                     Meal Type:{' '}
                     <input
@@ -74,7 +119,6 @@ function UpdateForm() {
                     <select
                         onChange={handleChange}
                         value={formData.difficulty}
-                        type='checkbox'
                         name='difficulty'
                     >
                         <option value='Easy'>Easy</option>
@@ -87,7 +131,7 @@ function UpdateForm() {
                     <input
                         onChange={handleChange}
                         value={formData.time}
-                        type='text'
+                        type='number'
                         name='time'
                         />
                 </label>
@@ -99,14 +143,19 @@ function UpdateForm() {
                 />
             </label>
             ))}
-                <input type='submit' />
+                <button type = "button" onClick={addIngredient}>Add Ingredient</button>
+                <button type = "button" onClick={deleteIngredient}>Delete Ingredient</button>
+                <button type = "submit">Update Recipe</button>
             </form>
+
+
         ) : (
-            <h2>Waiting on you...</h2>
+            <h2>Waiting for response...</h2>
         )}
         <button onClick={handleClick}>Close Form</button>
+
         </>
-    )
+        )
 }
 
 export default UpdateForm;

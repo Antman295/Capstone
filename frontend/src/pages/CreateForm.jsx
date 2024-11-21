@@ -74,7 +74,6 @@ function CreateForm() {
         }
 
         const doesDishExists = await dishExists(formData.dish)
-        console.log("Does dish exist?", doesDishExists);
 
         if (doesDishExists) {
             alert('This dish is already on the list. Please enter a new one.')
