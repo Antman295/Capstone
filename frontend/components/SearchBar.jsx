@@ -1,32 +1,30 @@
 import { Link } from 'react-router-dom';
 
-function SearchBar({ formData, setFormData, showRecipes }) {
+function SearchBar({ formData, setFormData, recipes, setFilteredRecipes }) {
     function handleChange(e) {
         const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
 
         if (name === 'searchParams') {
             const search = value.toLowerCase();
-            setFormData({
-                ...formData,
-                [name]: value,
-            });
-
             const filter = recipes.filter((recipe) =>
-            recipe.dish.toLowerCase().includes(search));
-            showRecipes(filter)
+            recipe.dish.toLowerCase().includes(search)
+        );
+            setFilteredRecipes(filter)
         }
     }
 
     function handleCheckbox(e) {
         const checked = e.target.checked;
-
-        setFormData({
-            ...formData,
-            onList: checked,
-        });
+        setFormData({...formData, onList: checked})
 
         if (checked) {
-            setRecipes(recipes);
+            setFilteredRecipes(recipes);
+        } else {
+            setFilteredRecipes([]);
         }
     }
 
@@ -43,7 +41,7 @@ function SearchBar({ formData, setFormData, showRecipes }) {
 
             <label>
                 <input 
-                    onChange={showRecipes} 
+                    onChange={handleCheckbox} 
                     name='onList' 
                     type='checkbox'
                     checked={formData.onList || false}
