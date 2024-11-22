@@ -5,8 +5,8 @@ export default function HomePage() {
         <>
         <h1>Food Picker</h1>
         <nav>
-            <Link to={'/recipes'}>Make Something At Home</Link> <br/>
-            <Link to={'/eatOut'}>Go Out To Eat</Link>
+            <Link to={'/recipes'}><button>Make Something At Home</button></Link> <br/><br/>
+            <Link to={'/eatOut'}><button>Go Out To Eat</button></Link>
         </nav>
         </>
     )

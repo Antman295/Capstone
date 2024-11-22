@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import SearchBar from '../../components/SearchBar';
 import RecipeTable from '../../components/RecipeTable';
@@ -61,6 +62,9 @@ function Recipes() {
                 </div>
             )}
         
+            <nav>
+                <Link to={'/'}><button>Go Back</button></Link>
+            </nav>
         </>
     )
 }
