@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import {useState, useEffect} from 'react';
-import SearchBar from '../../components/SearchBar';
-import RecipeTable from '../../components/RecipeTable';
-import { getRecipes } from '../../utilites/controller.mjs';
+import SearchBar from '../components/SearchBar';
+import RecipeTable from '../components/RecipeTable';
+import { getRecipes } from '../utilites/controller.mjs';
+import '../styles/Recipes.css'
 
 function Recipes() {
     const [list, setList] = useState([]);
@@ -40,7 +41,7 @@ function Recipes() {
 
     return (
         <>
-        <div>
+        <div className='recipes'>
             <h1>Make At Home</h1>
         </div>
             <SearchBar 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { findOneRecipe, updateRecipe } from '../../utilites/controller.mjs';
+import { findOneRecipe, updateRecipe } from '../utilites/controller.mjs';
 
 function UpdateForm() {
     const nav = useNavigate();

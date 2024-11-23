@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createRecipe } from '../../utilites/controller.mjs';
+import { createRecipe } from '../utilites/controller.mjs';
 import { useNavigate } from 'react-router-dom';
 
 function CreateForm() {

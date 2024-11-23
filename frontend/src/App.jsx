@@ -5,7 +5,7 @@ import CreateForm from './pages/CreateForm';
 import HomePage from './pages/HomePage'
 import UpdateForm from './pages/UpdateForm'
 import FastFood from './pages/FastFood'
-import './App.css'
+import './styles/App.css'
 
 
 function App() {
