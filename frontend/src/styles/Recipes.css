@@ -1,5 +1,8 @@
-body {
-    background-color: white;
-    display: flex;
-    justify-content: center;
+body.recipes-page {
+    margin: 0;
+    padding: 0;
+    background-image: url(https://cdn.prod.website-files.com/5e50fe1a8c34f832ff4401f5/5e5e5e0b3a300b338137bcd7_IND_9_Murray_Street_8W_New_York_NY_Studio_-_5_Photos_2_20181016-100146.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
 }

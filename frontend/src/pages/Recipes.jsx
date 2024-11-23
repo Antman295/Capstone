@@ -13,6 +13,14 @@ function Recipes() {
         onList: false,
     });
 
+    // Used to add style to this page
+    useEffect(() => {
+        document.body.classList.add('recipes-page');
+        return () => {
+          document.body.classList.remove('recipes-page');
+        };
+      }, [])
+
     async function getData() {
         try {
         let res = await getRecipes();
@@ -43,7 +51,7 @@ function Recipes() {
         <>
         <div className='recipes'>
             <h1>Make At Home</h1>
-        </div>
+
             <SearchBar 
                 formData={formData} 
                 setFormData={setFormData}
@@ -62,10 +70,11 @@ function Recipes() {
                 <h3>Add some recipes to the list if this message still appears as it might be empty</h3>
                 </div>
             )}
-        
+            
             <nav>
                 <Link to={'/'}><button>Go Back</button></Link>
             </nav>
+            </div>
         </>
     )
 }
