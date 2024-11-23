@@ -7,6 +7,7 @@ function UpdateForm() {
     const nav = useNavigate();
     const { id } = useParams();
     const [formData, setFormData] = useState(null);
+    const [warning, setWarning] = useState(false);
 
     // Used to add style to this page
     useEffect(() => {
@@ -26,7 +27,11 @@ function UpdateForm() {
     }, []);
 
     function handleClick(e) {
+        if (warning) {
         nav('/recipes');
+        } else {
+            setWarning(true);
+        }
     }
 
     function handleChange(e) {
@@ -147,8 +152,16 @@ function UpdateForm() {
         ) : (
             <h2>Waiting for response...</h2>
         )}
-        <br/><button onClick={handleClick}>Close Form</button>
-
+        <br/> {warning ? (
+            <>
+                <span>Are you sure? All changes will be lost!</span> {" "}
+                <button onClick={handleClick}>Yes</button> {" "}
+                <button onClick={() => setWarning(false)}>No</button>
+            </>
+        ) : (
+            <button onClick={handleClick}>Close Form</button>    
+        )}
+        
         </>
         )
 }

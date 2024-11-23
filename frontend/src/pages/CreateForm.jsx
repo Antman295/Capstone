@@ -14,6 +14,8 @@ function CreateForm() {
         ingredients: [{name: ""}],
     });
 
+    const [warning, setWarning] = useState(false);
+
     // Used to add style to this page
     useEffect(() => {
         document.body.classList.add('forms');
@@ -23,7 +25,11 @@ function CreateForm() {
         }, [])
 
     function handleClick(e) {
+        if (warning) {
         nav('/recipes');
+        } else {
+            setWarning(true);
+        }
     }
 
     function handleChange(e) {
@@ -140,7 +146,16 @@ function CreateForm() {
             </button> <br/><br/>
             <button type="submit">Submit Recipe</button>
         </form> <br/>
-        <button onClick={handleClick}>Close Form</button>
+        {warning ? (
+            <>
+                <span>Are you sure? All unsaved progress will be lost!</span> {" "}
+                <button onClick={handleClick}>Yes</button> {" "}
+                <button onClick={() => setWarning(false)}>No</button>
+            </>
+        ) : (
+            <button onClick={handleClick}>Close Form</button>    
+        )}
+        
         </>
     )
 }
