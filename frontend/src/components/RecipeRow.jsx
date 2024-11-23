@@ -33,11 +33,11 @@ function RecipeRow({ recipe, setRecipe, recipes }) {
             {warning ? (
                     <>
                         <span>Confirm delete? This can't be undone</span> {" "}
-                        <button onClick={handleDelete}>Yes</button> {" "}
+                        <button class = "delete" onClick={handleDelete}>Yes</button> {" "}
                         <button onClick={() => setWarning(false)}>No</button>
                     </>
                 ) : (
-                    <button onClick={() => setWarning(true)}>Delete</button>
+                    <button class = "caution" onClick={() => setWarning(true)}>Delete</button>
                 )}
             </td>
             <td>

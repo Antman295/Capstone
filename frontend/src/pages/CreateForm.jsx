@@ -144,16 +144,16 @@ function CreateForm() {
             <button type="button" onClick={deleteIngredient}>
                     Delete Ingredient
             </button> <br/><br/>
-            <button type="submit">Submit Recipe</button>
+            <button className = "submit" type="submit">Submit Recipe</button>
         </form> <br/>
         {warning ? (
             <>
                 <span>Are you sure? All unsaved progress will be lost!</span> {" "}
-                <button onClick={handleClick}>Yes</button> {" "}
+                <button className = "delete" onClick={handleClick}>Yes</button> {" "}
                 <button onClick={() => setWarning(false)}>No</button>
             </>
         ) : (
-            <button onClick={handleClick}>Close Form</button>    
+            <button className = "caution" onClick={handleClick}>Close Form</button>    
         )}
         
         </>

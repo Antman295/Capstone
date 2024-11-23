@@ -147,7 +147,7 @@ function UpdateForm() {
             ))}
                 <br/><button type = "button" onClick={addIngredient}>Add Ingredient</button> {" "}
                 <button type = "button" onClick={deleteIngredient}>Delete Ingredient</button><br/><br/>
-                <button type = "submit">Update Recipe</button>
+                <button className = "submit" type = "submit">Update Recipe</button>
             </form> 
         ) : (
             <h2>Waiting for response...</h2>
@@ -155,11 +155,11 @@ function UpdateForm() {
         <br/> {warning ? (
             <>
                 <span>Are you sure? All changes will be lost!</span> {" "}
-                <button onClick={handleClick}>Yes</button> {" "}
+                <button className = "delete" onClick={handleClick}>Yes</button> {" "}
                 <button onClick={() => setWarning(false)}>No</button>
             </>
         ) : (
-            <button onClick={handleClick}>Close Form</button>    
+            <button className = "caution" onClick={handleClick}>Close Form</button>    
         )}
         
         </>
