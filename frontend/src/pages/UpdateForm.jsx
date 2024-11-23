@@ -1,11 +1,20 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { findOneRecipe, updateRecipe } from '../utilites/controller.mjs';
+import '../styles/Form.css'
 
 function UpdateForm() {
     const nav = useNavigate();
     const { id } = useParams();
     const [formData, setFormData] = useState(null);
+
+    // Used to add style to this page
+    useEffect(() => {
+        document.body.classList.add('forms');
+        return () => {
+            document.body.classList.remove('forms');
+        };
+        }, [])
 
     useEffect(() => {
         async function getData() {

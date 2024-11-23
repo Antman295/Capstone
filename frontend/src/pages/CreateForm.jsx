@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createRecipe } from '../utilites/controller.mjs';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Form.css'
 
 function CreateForm() {
     const nav = useNavigate();
@@ -12,6 +13,14 @@ function CreateForm() {
         time: 0,
         ingredients: [{name: ""}],
     });
+
+    // Used to add style to this page
+    useEffect(() => {
+        document.body.classList.add('forms');
+        return () => {
+            document.body.classList.remove('forms');
+        };
+        }, [])
 
     function handleClick(e) {
         nav('/recipes');
