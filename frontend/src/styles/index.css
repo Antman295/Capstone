@@ -138,3 +138,9 @@ button:focus-visible {
   background-color: lightgray;
   border-radius: 8px;
 }
+
+.foodImage {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+}

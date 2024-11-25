@@ -68,7 +68,7 @@ export default function FastFood() {
                         <div key={index}>
                             <h3>{item.title || 'Unnamed Restaurant'}</h3>
                             {item.image && (
-                                <img src={item.image} alt={item.title || 'Restaurant'} />
+                                <img className = "foodImage" src={item.image} alt={item.title || 'Restaurant'} />
                             )}
                             <h2>{item.restaurantChain || 'No description available.'}</h2>
                         </div>
