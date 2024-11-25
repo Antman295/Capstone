@@ -67,7 +67,7 @@ function Recipes() {
             ) : (
                 <div>
                 <h2>Search for a recipe or click the checkbox to show all of them</h2>
-                <h3>Add some recipes to the list if this message still appears as it might be empty</h3>
+                <h3>If this message still appears, the list might be empty or the recipe doesn't exist</h3>
                 </div>
             )}
             
