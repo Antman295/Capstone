@@ -1,25 +1,17 @@
-export async function getRestaurants(name) {
-    const url = 'https://fast-food-restaurants-usa-top-50-chains.p.rapidapi.com/restaurants-top/kfc/location/0';
-const options = {
-	method: 'GET',
-	headers: {
-		'x-rapidapi-key': '6a6e062b9emsh16b34a837e91457p1e0127jsnebf2d9722ccc',
-		'x-rapidapi-host': 'fast-food-restaurants-usa-top-50-chains.p.rapidapi.com'
-	}
-};
+export async function searchMenuItems(query) {
+    const apiKey = '6b2628a2641a433dbf7604801ccbfd50'
+    const url = `https://api.spoonacular.com/food/menuItems/search?query=${query}&number=10&apiKey=${apiKey}`;
 
-try {
-	const response = await fetch(url, options);
-
-	if (!response.ok) {
-		throw new Error(`HTTP error! status: ${response.status}`);
-	}
-
-	const result = await response.json();
-	console.log(result); // Process the JSON response here
-
-	return result; // Optionally return the data for use elsewhere
-} catch (error) {
-	console.error('Error fetching data:', error);
-}
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+        }
+        const result = await response.json();
+        console.log('Spoonacular API Response:', result);
+        return result;
+    } catch (error) {
+        console.error('Error fetching data from Spoonacular:', error);
+        return null;
+    }
 }
