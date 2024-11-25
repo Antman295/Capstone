@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { searchMenuItems } from '../utilites/api';
+import { getRestaurants } from '../utilites/api';
 import { Link } from "react-router-dom";
 import '../styles/FastFood.css';
 
 export default function FastFood() {
     const [searchInput, setSearchInput] = useState(''); // User input for city/food search
     const [restaurantData, setRestaurantData] = useState([]); // API response data
-    const [searchCity, setSearchCity] = useState(''); // Tracks the city being searched
     const [loading, setLoading] = useState(false); // Loading state
 
     useEffect(() => {
@@ -17,50 +16,46 @@ export default function FastFood() {
         };
     }, []);
 
-    const fetchData = async (city) => {
-        setLoading(true); // Show loading spinner
+    const fetchData = async (query) => {
+        setLoading(true);
         try {
-            const data = await searchMenuItems(city); // Call API function
-            console.log(data); // Log API response for debugging
+            const data = await getRestaurants(query); // Call API function
+            console.log('API Response:', data); // Log API response for debugging
 
             // Adjust response handling based on API structure
-            if (data && data.restaurants) {
-                setRestaurantData(data.restaurants);
-            } else if (data && data.menuItems) {
+            if (data && data.menuItems) { // Ensure API response has 'restaurants'
                 setRestaurantData(data.menuItems);
             } else {
-                setRestaurantData([]);
+                setRestaurantData([]); // Fallback for empty or unexpected response
             }
         } catch (error) {
             console.error('Error fetching data:', error);
             setRestaurantData([]);
         } finally {
-            setLoading(false); // Hide loading spinner
+            setLoading(false);
         }
     };
 
     const handleSearch = () => {
         if (searchInput.trim()) {
-            setSearchCity(searchInput); // Save the search term
-            fetchData(searchInput); // Fetch data for the entered city
+            fetchData(searchInput); // Fetch data for the entered query
         } else {
-            alert('Please enter a valid city name.');
+            alert('Please enter a valid food item.');
         }
     };
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className="loading"><h2>Loading...</h2></div>;
     }
 
     return (
         <div className="menu">
             <h1>Restaurant Search</h1>
-            
-            {/* Input Field for City Name */}
+
             <div>
                 <input
                     type="text"
-                    placeholder="Enter a city or food name"
+                    placeholder="Enter a food item"
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
                 />
@@ -69,30 +64,20 @@ export default function FastFood() {
 
             <div>
                 {restaurantData.length > 0 ? (
-                    restaurantData.map((restaurant, index) => (
-                        <div key={index} className="restaurant">
-                            <h2>{restaurant.name || 'Unnamed Restaurant'}</h2>
-                            <p>{restaurant.description || 'No description available'}</p>
-                            {restaurant.image && (
-                                <img src={restaurant.image} alt={restaurant.name} />
+                    restaurantData.map((item, index) => (
+                        <div key={index}>
+                            <h3>{item.title || 'Unnamed Restaurant'}</h3>
+                            {item.image && (
+                                <img src={item.image} alt={item.title || 'Restaurant'} />
                             )}
-                            {restaurant.menu && (
-                                <ul>
-                                    {restaurant.menu.map((item, idx) => (
-                                        <li key={idx}>
-                                            {item.name} - {item.price || 'N/A'}
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
+                            <h2>{item.restaurantChain || 'No description available.'}</h2>
                         </div>
                     ))
                 ) : (
-                    <p>No restaurants found for "{searchCity}"</p>
+                    <p>No restaurants found for "{searchInput}"</p>
                 )}
             </div>
 
-            {/* Navigation */}
             <nav>
                 <Link to={'/'}>
                     <button>Go Back</button>

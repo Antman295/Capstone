@@ -1,4 +1,4 @@
-export async function searchMenuItems(query) {
+export async function getRestaurants(query) {
     const apiKey = '6b2628a2641a433dbf7604801ccbfd50'
     const url = `https://api.spoonacular.com/food/menuItems/search?query=${query}&number=10&apiKey=${apiKey}`;
 
