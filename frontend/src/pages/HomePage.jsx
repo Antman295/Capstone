@@ -5,9 +5,9 @@ import '../styles/HomePage.css'
 
 export default function HomePage() {
     useEffect(() => {
-        document.body.classList.add('homepage');
+        document.body.classList.add('home');
         return () => {
-            document.body.classList.remove('homepage');
+            document.body.classList.remove('home');
         };
         }, [])
 
