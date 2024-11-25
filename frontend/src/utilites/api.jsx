@@ -10,9 +10,16 @@ const options = {
 
 try {
 	const response = await fetch(url, options);
-	const result = await response.text();
-	console.log(result);
+
+	if (!response.ok) {
+		throw new Error(`HTTP error! status: ${response.status}`);
+	}
+
+	const result = await response.json();
+	console.log(result); // Process the JSON response here
+
+	return result; // Optionally return the data for use elsewhere
 } catch (error) {
-	console.error(error);
+	console.error('Error fetching data:', error);
 }
 }
