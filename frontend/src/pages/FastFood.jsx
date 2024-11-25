@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import '../styles/FastFood.css';
 
 export default function FastFood() {
-    const [searchInput, setSearchInput] = useState(''); // User input for city/food search
-    const [restaurantData, setRestaurantData] = useState([]); // API response data
-    const [loading, setLoading] = useState(false); // Loading state
+    const [searchInput, setSearchInput] = useState('');
+    const [restaurantData, setRestaurantData] = useState([]);
+    const [loading, setLoading] = useState(false); 
 
     useEffect(() => {
         // Add custom class to body for styling
@@ -59,7 +59,7 @@ export default function FastFood() {
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
                 />
-                <button onClick={handleSearch}>Search</button>
+                <br/><br /><button onClick={handleSearch}>Search</button>
             </div>
 
             <div>
@@ -74,7 +74,7 @@ export default function FastFood() {
                         </div>
                     ))
                 ) : (
-                    <p>No restaurants found for "{searchInput}"</p>
+                    <p>No restaurants with the item: "{searchInput}"</p>
                 )}
             </div>
 
