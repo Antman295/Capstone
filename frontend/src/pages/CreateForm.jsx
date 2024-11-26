@@ -16,7 +16,6 @@ function CreateForm() {
 
     const [warning, setWarning] = useState(false);
 
-    // Used to add style to this page
     useEffect(() => {
         document.body.classList.add('forms');
         return () => {
@@ -66,8 +65,6 @@ function CreateForm() {
         try {
         let res = await fetch('http://localhost:3000/api/recipes');
         const recipes = await res.json();
-        console.log("Existing recipes:", recipes);
-        // return true;
         return recipes.some(recipe => recipe.dish.toLowerCase() === dish.toLowerCase());
         } catch (err) {
             console.error('Error checking if dish exists: ', err)
