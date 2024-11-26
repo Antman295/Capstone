@@ -11,6 +11,19 @@ The frontend was created with React, JavaScript and some CSS for the styling whe
 ## Approach Taken
 I started with figuring out what I was going to do for this capstone then started with the recipes section as that was going to be the hardest since that utilized CRUD. After taking five days to get all the functionality done, from setting up the database, connecting the backend to the frontend, and making sure all the CRUD capabilites works, I then went to work on styling, which was alot complicated than I thought. With the recipe section done and the styling done, I then went onto finding a good fast food/restarant API for the eat out section, which also took longer than expected.
 
+## CRUD Routes
+### CREATE - POST
+To add Recipes to the list
+
+### READ - GET
+To get the Recipes currently on the list
+
+### UPDATE - PUT
+To update a Recipe
+
+### DELETE - DELETE
+To delete a Recipe off the list
+
 ## How To Use 
 On the homepage, users have two options: "Make Something At Home" and "Go Out To Eat". 
 
