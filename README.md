@@ -4,7 +4,7 @@
 My capstone is a web app that helps users figure out what to eat when they can't figure out what. They can either choose between eating out or making something at home with a list of recipes they can add, delete or edit. This web application uses a frontend and a backend, which I will go into how they were created in the next section below.
 
 ## Technologies Used
-The frontend was created with React, JavaScript and some CSS for the styling where the navigation from page to page was done with Link from react-router-dom. The backend was created with JavaScript and uses Moongoose to get, send and delete data from MongoDB which stores all the data. The frontend and backend was connected with axios and all of the code was done in Microsoft Visual Studio Code and committed to a GitHub Repository. I also used a blank API to retrieve the data for the "eat out" option, which is linked below in acknowledgments.
+The frontend was created with React, JavaScript and some CSS for the styling where the navigation from page to page was done with Link from react-router-dom. The backend was created with JavaScript and uses Moongoose to get, send and delete data from MongoDB which stores all the data. The frontend and backend was connected with axios and all of the code was done in Microsoft Visual Studio Code and committed to a GitHub Repository. I also used an API called "spoonacular API" to retrieve the data for the "eat out" option, which is linked below in acknowledgments.
 
 [Link to my GitHub] https://github.com/Antman295
 
@@ -16,6 +16,7 @@ On the homepage, users have two options: "Make Something At Home" and "Go Out To
 
 If users pick "Make Something At Home", users can either search for a recipe, show all recipes on the list, or add one. If they choose to add a recipe, users will have to fill out a form of the meal type, the name of the dish, how difficult it is to make it, how long it will take in minutes and the ingredients. Users can also edit or delete the recipes on their list.
 
-If users pick "Go Out To Eat"...
+If users pick "Go Out To Eat", users can enter a food item into the text field. If users type in burger for example, then restaurants with burgers will show up with a picture of what the item looks like after clicking the search button. If an item does not exist, the message below the search button will tell users that it does not exist. 
 
 ## Acknowledgements
+[Spoonacular API] https://spoonacular.com/food-api
