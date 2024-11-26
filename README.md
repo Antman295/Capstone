@@ -4,7 +4,7 @@
 My capstone is a web app that helps users figure out what to eat when they can't figure out what. They can either choose between eating out or making something at home with a list of recipes they can add, delete or edit. This web application uses a frontend and a backend, which I will go into how they were created in the next section below.
 
 ## Technologies Used
-The frontend was created with React, JavaScript and some CSS for the styling where the navigation from page to page was done with Link from react-router-dom. The backend was created with JavaScript and uses Moongoose to get, send and delete data from MongoDB which stores all the data. The frontend and backend was connected with axios and all of the code was done in Microsoft Visual Studio Code and committed to a GitHub Repository. I also used an API called "spoonacular API" to retrieve the data for the "eat out" option, which is linked below in acknowledgments.
+The frontend was created with React, JavaScript and some CSS for the styling where the navigation from page to page was done with Link from react-router-dom. The backend was created with JavaScript and uses Moongoose to create, read, update and delete data from MongoDB which stores all the data. The frontend and backend was connected with axios and all of the code was done in Microsoft Visual Studio Code and committed to a GitHub Repository. I also used an API called "spoonacular API" to retrieve the data for the "eat out" option, which is linked below in acknowledgments.
 
 [Link to my GitHub] https://github.com/Antman295
 
